@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:8.3.0
+    environment:
+      - MYSQL_DATABASE=password_manager_db
+      - MYSQL_ROOT_PASSWORD=admin123
+#      - MYSQL_TCP_PORT=3307
+#      - MYSQL_PORT=3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - password-manager-network
+
+networks:
+  password-manager-network:
+    driver: bridge
